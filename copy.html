@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex justify-center mt-20">
+
+  <div class="w-full max-w-xl bg-white shadow-lg rounded p-6">
+
+    <h1 class="text-4xl text-center text-gray-400 mb-6 font-light">
+      todos
+    </h1>
+
+    <input
+      id="todo-input"
+      class="w-full border p-3 rounded mb-4"
+      placeholder="What needs to be done?"
+    />
+
+    <ul id="todo-list" class="space-y-2"></ul>
+
+    <div class="flex justify-between items-center mt-4 text-sm text-gray-500">
+
+      <span id="todo-count">0 items left</span>
+
+      <div class="space-x-3">
+        <button onclick="filterTodos('all')" class="hover:underline">All</button>
+        <button onclick="filterTodos('active')" class="hover:underline">Active</button>
+        <button onclick="filterTodos('completed')" class="hover:underline">Completed</button>
+      </div>
+
+      <button onclick="clearCompleted()" class="text-red-500 hover:underline">
+        Clear completed
+      </button>
+
+    </div>
+
+  </div>
+
+<script>
+    const input = document.getElementById("todo-input");
+const list = document.getElementById("todo-list");
+const count = document.getElementById("todo-count");
+
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+let filter = "all";
+
+function save() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function render() {
+  list.innerHTML = "";
+
+  let filtered = todos.filter(todo => {
+    if (filter === "active") return !todo.completed;
+    if (filter === "completed") return todo.completed;
+    return true;
+  });
+
+  filtered.forEach((todo, index) => {
+    const li = document.createElement("li");
+    li.className = "flex items-center justify-between border p-2 rounded";
+
+    li.innerHTML = `
+      <div class="flex items-center gap-3">
+        <input type="checkbox" ${todo.completed ? "checked" : ""} onchange="toggleTodo(${index})">
+        <span class="${todo.completed ? 'line-through text-gray-400' : ''}">
+          ${todo.text}
+        </span>
+      </div>
+      <button onclick="deleteTodo(${index})" class="text-red-400">✕</button>
+    `;
+
+    list.appendChild(li);
+  });
+
+  const active = todos.filter(t => !t.completed).length;
+  count.textContent = `${active} item${active !== 1 ? "s" : ""} left`;
+
+  save();
+}
+
+input.addEventListener("keypress", e => {
+  if (e.key === "Enter" && input.value.trim()) {
+    todos.push({
+      text: input.value,
+      completed: false
+    });
+
+    input.value = "";
+    render();
+  }
+});
+
+function toggleTodo(index) {
+  todos[index].completed = !todos[index].completed;
+  render();
+}
+
+function deleteTodo(index) {
+  todos.splice(index, 1);
+  render();
+}
+
+function filterTodos(type) {
+  filter = type;
+  render();
+}
+
+function clearCompleted() {
+  todos = todos.filter(todo => !todo.completed);
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
