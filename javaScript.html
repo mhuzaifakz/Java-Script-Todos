@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <script>
+        const numbers = ["Two", "three"];
+        //-- using unshift --
+        numbers.unshift("one");
+        //-- using push --
+        numbers.push("four");
+        
+        console.log(numbers);
+        console.log(numbers.includes("five"));
+        console.log(numbers.indexOf("five"));
+
+         //-- using indexOf --
+
+        if(numbers.indexOf("five") == -1) {
+            numbers.push("five")
+        } 
+        console.log(numbers);
+
+        //-- using includes --
+
+        if(numbers.includes("six") == false) {
+            numbers.push("six");
+        }
+
+        console.log(numbers);
+
+        //-- using --
+    </script>
+</body>
+</html>

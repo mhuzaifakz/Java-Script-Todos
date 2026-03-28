@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javaScript</title>
+</head>
+<body>
+    <script>
+        const numbers = ["Two", "Three"];
+
+        //-- using unshift
+        numbers.unshift("one");
+
+        //-- using push
+        numbers.push("four");
+
+        console.log('1', numbers);
+
+        //-- using indexOf
+
+        if(numbers.indexOf("five") == -1) {
+            numbers.push("five");
+        };
+        console.log('2', numbers);
+
+        //-- using inculeds
+
+        if(numbers.includes("six") == false) {
+            numbers.push("six");
+        };
+        console.log('3', numbers);
+
+        //-- using indexOf
+
+         if(numbers.indexOf("six") != -1) {
+            numbers.push("seven");
+        };
+
+        console.log( '5',numbers);
+
+        //-- using inculeds
+        
+         if(numbers.includes("seven")) {
+            numbers.push("eigth");
+        };
+        console.log('6', numbers);
+        //-- using shift
+
+        numbers.shift();
+
+        console.log('7', numbers);
+
+        //-- using pop
+
+        numbers.pop();
+
+        console.log('8', numbers);
+
+        
+    </script>
+</body>
+</html>
