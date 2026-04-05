@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing My JS un-order List</title>
+</head>
+<body>
+    <ul>
+        <li>
+            HTML
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            CSS
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            Tail Wind CSS
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            java Script
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            PHP
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            SQL
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        <li>
+            MONGODB
+            <button onclick="unOrderListItem(event)">Remove</button>
+        </li>
+        
+    </ul>
+
+    <h1>Un-Order List Two</h1>
+
+    <ul id="unOrderListItemTwo">
+        <li>
+            HTML
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            CSS
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            Tail Wind CSS
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            java Script
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            PHP
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            SQL
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        <li>
+            MONGODB
+            <button onclick="removeUnOrderListItemTwo()">Remove</button>
+        </li>
+        
+    </ul>
+
+    <script>
+        function unOrderListItem() {
+            event.target.parentElement.remove();
+        }
+
+            
+        function removeUnOrderListItemTwo() {
+            document.getElementById("unOrderListItemTwo").addEventListener("click", function(event) {
+                if(event.target.localName == "button") {
+                    console.log(event)
+                }
+            });
+        };
+
+
+    </script>
+</body>
+</html>
