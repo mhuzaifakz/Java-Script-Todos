@@ -6,16 +6,19 @@
     <title>Input | javaScript</title>
 </head>
 <body>
-    <form id="from" onsubmit="">
-        <input type="search">
+    <form id="from" onsubmit="onSubmitFrom(event)">
+        <input onchange="inputFunction(event)" type="search">
     </form>
 
     <script>
-        function onSubmitFrom() {
-         const form = document.getElementById("from");
-         
-         form.pre
+        function onSubmitFrom(event) {
+            event.preventDefault();
+        //  const form = document.getElementById("from");
     }  
+    function inputFunction(event) {
+        console.log(event.target.value);
+    }; 
+    
     </script>
 </body>
 </html>

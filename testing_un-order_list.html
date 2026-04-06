@@ -6,6 +6,7 @@
     <title>Testing My JS un-order List</title>
 </head>
 <body>
+    <h1>Un-Order List</h1>
     <ul>
         <li>
             HTML
@@ -42,31 +43,31 @@
 
     <ul id="unOrderListItemTwo">
         <li>
-            HTML
+            HTML Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            CSS
+            CSS Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            Tail Wind CSS
+            Tail Wind CSS Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            java Script
+            java Script Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            PHP
+            PHP Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            SQL
+            SQL Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         <li>
-            MONGODB
+            MONGODB Two
             <button onclick="removeUnOrderListItemTwo()">Remove</button>
         </li>
         
@@ -81,8 +82,9 @@
         function removeUnOrderListItemTwo() {
             document.getElementById("unOrderListItemTwo").addEventListener("click", function(event) {
                 if(event.target.localName == "button") {
-                    console.log(event)
-                }
+                    event.target.parentElement.remove();
+                };
+
             });
         };
 

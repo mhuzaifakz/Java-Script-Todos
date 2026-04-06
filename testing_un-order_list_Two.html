@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+</head>
+<body>
+    <h1>Un-order List One</h1>
+    <ul>
+        <li>
+            HTML
+            <button onclick="removingFuction(event)">Remove This li!</button>
+        </li>
+        <li>
+            CSS
+            <button onclick="removingFuction(event)">Remove This li!</button>
+        </li>
+        <li>
+            Tail Wind CSS
+            <button onclick="removingFuction(event)">Remove This li!</button>
+        </li>
+        <li>
+            Java Script
+            <button onclick="removingFuction(event)">Remove This li!</button>
+        </li>
+    </ul>
+
+    <h1>Un-order List Two</h1>
+
+        <ul id="un-order-list">
+        <li>
+            SQL
+            <button onclick="removingFuctionTwo(event)">Remove This li!</button>
+        </li>
+        <li>
+            React
+            <button onclick="removingFuctionTwo(event)">Remove This li!</button>
+        </li>
+        <li>
+            How To
+            <button onclick="removingFuctionTwo(event)">Remove This li!</button>
+        </li>
+        <li>
+            MONGODB
+            <button onclick="removingFuctionTwo(event)">Remove This li!</button>
+        </li>
+    </ul>
+    <script>
+        function removingFuction(event) {
+            event.target.parentElement.remove();
+        };
+
+        function removingFuctionTwo() {
+            document.getElementById("un-order-list").addEventListener("click", function(event) {
+                if(event.target.localName == "button") {
+                    event.target.parentElement.remove();
+                };
+            })
+        };
+    </script>
+</body>
+</html>
