@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Form Data</title>
+</head>
+<body class="bg-gray-300">
+    <table class="border border-2 p-4 mx-[500px] my-20">
+        <tr>
+            <th class="border border-2 bg-gray-100 p-4">First-Name</th>
+            <th class="border border-2 bg-gray-100 p-4">Last-Name</th>
+            <th class="border border-2 bg-gray-100 p-4">Age</th>
+            <th class="border border-2 bg-gray-100 p-4">Fav Language</th>
+        </tr>
+        <tr>
+            <td class="border border-2 bg-gray-100 p-4" id="first-name"></td>
+            <td class="border border-2 bg-gray-100 p-4" class="border" id="last-name"></td>
+            <td class="border border-2 bg-gray-100 p-4" id="age"></td>
+            <td class="border border-2 bg-gray-100 p-4" id="fav-language"></td>
+        </tr>
+    </table>
+</body>
+<script>
+    console.log("query Params:", location.search);
+    const queryParams = new URLSearchParams(location.search);
+
+    const fname = queryParams.get("first-name");
+    const lname = queryParams.get("last-name");
+    const age = queryParams.get("age");
+    const favLanguage = queryParams.get("fav-language");
+
+    document.getElementById("first-name").innerHTML = fname;
+    document.getElementById("last-name").innerHTML = lname;
+    document.getElementById("age").innerHTML = age;
+    document.getElementById("fav-language").innerHTML = favLanguage;
+    </script>
+</html>

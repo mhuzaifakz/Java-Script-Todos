@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title></title>
 </head>
-<body>
-    <form action="from_data_Two.html"></form>
+<body class="bg-gray-300">
+    <form class="mx-[510px] my-[200px] bg-white px-[26px] py-[100px] border rounded-[25px]" action="from_data_Two.html" method="get">
+        <label for="first-name" class="mx-[12px] text-blue-700 my-4">First-Name:</label>
+        <input type="text" name="first-name" id="first-name" class=" my-4 w-40 h-8 rounded-md bg-blue-300 text-blue-500"><br>
+
+        <label for="last-name" class="mx-[12px] text-blue-700">Last-Name:</label>
+        <input type="text" name="last-name" id="last-name" class="w-40 h-8 rounded-md bg-blue-300 text-blue-500"><br>
+
+        <label for="age" class="mx-[12px] text-blue-700 my-4">Age:</label>
+        <input type="number" name="age" id="age" class="my-4 w-40 h-8 rounded-md bg-blue-300 text-blue-500"><br>
+
+        <input type="radio" id="male" name="gender" class="mx-[12px] text-blue-500">
+        <label for="male" class=" text-blue-700">Male</label><br>
+
+        <input type="radio" id="female" name="gender" class=" my-4 mx-[12px] text-pink-500">
+        <label for="female" class=" text-pink-500 my-4">Female</label><br>
+
+        <label for="fav-language" class=" mx-[12px] text-blue-700">Fav-language:</label>
+       <select name="fav-language" id="fav-language" class="w-40 h-8 rounded-md bg-blue-300 mx-[12px] text-blue-500">
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="java-Script">java Script</option>
+        <option value="Tailwind-CSS">Tailwind CSS</option>
+        <option value="PHP">PHP</option>
+        <option value="SQL">SQL</option>
+       </select><br>
+
+       <input type="submit" class="text-white bg-blue-700 w-40 h-10 rounded-md my-4 mx-[12px]">
+       <input type="reset" class="text-white bg-blue-700 w-40 h-10 rounded-md">
+    </form>
 </body>
 </html>
