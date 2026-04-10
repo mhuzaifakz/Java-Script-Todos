@@ -7,17 +7,19 @@
     <title>Form Data</title>
 </head>
 <body class="bg-gray-300">
-    <table class="border border-2 p-4 mx-[500px] my-20">
+    <table class="border border-2 p-4 mx-[350px] my-20">
         <tr>
             <th class="border border-2 bg-gray-100 p-4">First-Name</th>
             <th class="border border-2 bg-gray-100 p-4">Last-Name</th>
             <th class="border border-2 bg-gray-100 p-4">Age</th>
+            <th class="border border-2 bg-gray-100 p-4">Email</th>
             <th class="border border-2 bg-gray-100 p-4">Fav Language</th>
         </tr>
         <tr>
             <td class="border border-2 bg-gray-100 p-4" id="first-name"></td>
             <td class="border border-2 bg-gray-100 p-4" class="border" id="last-name"></td>
             <td class="border border-2 bg-gray-100 p-4" id="age"></td>
+            <td class="border border-2 bg-gray-100 p-4" id="email"></td>
             <td class="border border-2 bg-gray-100 p-4" id="fav-language"></td>
         </tr>
     </table>
@@ -29,11 +31,13 @@
     const fname = queryParams.get("first-name");
     const lname = queryParams.get("last-name");
     const age = queryParams.get("age");
+    const email = queryParams.get("email");
     const favLanguage = queryParams.get("fav-language");
 
     document.getElementById("first-name").innerHTML = fname;
     document.getElementById("last-name").innerHTML = lname;
     document.getElementById("age").innerHTML = age;
+    document.getElementById("email").innerHTML = email;
     document.getElementById("fav-language").innerHTML = favLanguage;
     </script>
 </html>
