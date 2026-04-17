@@ -3,282 +3,245 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="Icon_Of_Todos_list" href="colour_full.png">
         <script src="https://cdn.tailwindcss.com"></script>
-
         <title>TODOS | JavaScript | Tailwind</title>
     </head>
-    <body
-        class="grid justify-center items-center bg-gray-200">
+    <body class="grid justify-center items-center bg-gray-100">
         <h1
             class="block text-8xl px-56 font-extralight mt-10 mb-10 text-red-500">Todos</h1>
-        <form onsubmit="addTodo(event)">
-            <input type="search" id="box" value
-                placeholder="What Need To Be Done Now?"
-                class="w-full px-[51px] py-4 shadow shadow-2xl text-[20px] border border-bottom hover:text-black"
-                keydown="addTodo(event)" >
-
-        </form>
+        <input type="search" id="box" value
+            placeholder="What Need To Be Done Now?"
+            class="w-full px-[51px] py-4 shadow shadow-2xl text-[20px] border border-bottom hover:text-black"
+            onkeyup="addTodo(event)">
         <ul>
-            <li class="group w-[696px] border border-gray-300 bg-white">
-                <label
-                    class=" p-[12px] inline-flex items-center cursor-pointer relative">
-                    <!-- Hidden real checkbox -->
-                    <input type="checkbox" class="peer hidden" />
-
-                    <!-- Custom circle -->
-                    <div
-                        class="w-10 h-10 peer rounded-full border-2 border-gray-300 
-              flex items-center justify-center
-              bg-white
-              peer-checked:bg-green-500
-              peer-checked:border-green-500
-              transition duration-200">
-
-                        <!-- Tick -->
-                        <svg
-                            class="w-8 h-8 stroke-white  peer-checked:block"
-                            fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <p class="pl-[8px] text-[20px] text-gray-400">
-                        fire
-                    </p>
-                    <!-- cross -->
-
-                    <!-- Cross Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="ml-[650px] w-6 h-6 text-gray-700 opacity-0 group-hover:opacity-100 hover:text-red-500 transition-all duration-300 cursor-pointer absolute"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-
-                </label>
-            </li>
-            <li class="group w-[696px] border border-gray-300 bg-white">
-                <label
-                    class=" p-[12px] inline-flex items-center cursor-pointer relative">
-                    <!-- Hidden real checkbox -->
-                    <input type="checkbox" class="peer hidden" />
-
-                    <!-- Custom circle -->
-                    <div
-                        class="w-10 h-10 peer rounded-full border-2 border-gray-300 
-              flex items-center justify-center
-              bg-white
-              peer-checked:bg-green-500
-              peer-checked:border-green-500
-              transition duration-200">
-
-                        <!-- Tick -->
-                        <svg
-                            class="w-8 h-8 stroke-white  peer-checked:block"
-                            fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <p class="pl-[8px] text-[20px] text-gray-400">
-                        ice
-                    </p>
-                    <!-- cross -->
-
-                    <!-- Cross Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="ml-[650px] w-6 h-6 text-gray-700 opacity-0 group-hover:opacity-100 hover:text-red-500 transition-all duration-300 cursor-pointer absolute"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-
-                </label>
-            </li>
-            <li class="group w-[696px] border border-gray-300 bg-white">
-                <label
-                    class=" p-[12px] inline-flex items-center cursor-pointer relative">
-                    <!-- Hidden real checkbox -->
-                    <input type="checkbox" class="peer hidden" />
-
-                    <!-- Custom circle -->
-                    <div
-                        class="w-10 h-10 peer rounded-full border-2 border-gray-300 
-              flex items-center justify-center
-              bg-white
-              peer-checked:bg-green-500
-              peer-checked:border-green-500
-              transition duration-200">
-
-                        <!-- Tick -->
-                        <svg
-                            class="w-8 h-8 stroke-white  peer-checked:block"
-                            fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <p class="pl-[8px] text-[20px] text-gray-400">
-                        water
-                    </p>
-                    <!-- cross -->
-
-                    <!-- Cross Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="ml-[650px] w-6 h-6 text-gray-700 opacity-0 group-hover:opacity-100 hover:text-red-500 transition-all duration-300 cursor-pointer absolute"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-
-                </label>
-            </li>
-            <li class="group w-[696px] border border-gray-300 bg-white">
-                <label
-                    class=" p-[12px] inline-flex items-center cursor-pointer relative">
-                    <!-- Hidden real checkbox -->
-                    <input type="checkbox" class="peer hidden" />
-
-                    <!-- Custom circle -->
-                    <div
-                        class="w-10 h-10 peer rounded-full border-2 border-gray-300 
-              flex items-center justify-center
-              bg-white
-              peer-checked:bg-green-500
-              peer-checked:border-green-500
-              transition duration-200">
-
-                        <!-- Tick -->
-                        <svg
-                            class="w-8 h-8 stroke-white  peer-checked:block"
-                            fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <p class="pl-[8px] text-[20px] text-gray-400">
-                        earth
-                    </p>
-                    <!-- cross -->
-
-                    <!-- Cross Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="ml-[650px] w-6 h-6 text-gray-700 opacity-0 group-hover:opacity-100 hover:text-red-500 transition-all duration-300 cursor-pointer absolute"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-
-                </label>
-            </li>
-            <li class="group w-[696px] border border-gray-300 bg-white">
-                <label
-                    class=" p-[12px] inline-flex items-center cursor-pointer relative">
-                    <!-- Hidden real checkbox -->
-                    <input type="checkbox" class="peer hidden" />
-
-                    <!-- Custom circle -->
-                    <div
-                        class="w-10 h-10 peer rounded-full border-2 border-gray-300 
-              flex items-center justify-center
-              bg-white
-              peer-checked:bg-green-500
-              peer-checked:border-green-500
-              transition duration-200">
-
-                        <!-- Tick -->
-                        <svg
-                            class="w-8 h-8 stroke-white  peer-checked:block"
-                            fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <p class="pl-[8px] text-[20px] text-gray-400">
-                        rock
-                    </p>
-                    <!-- cross -->
-
-                    <!-- Cross Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="ml-[650px] w-6 h-6 text-gray-700 opacity-0 group-hover:opacity-100 hover:text-red-500 transition-all duration-300 cursor-pointer absolute"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-
-                </label>
-            </li>
-            <li class="w-[696px] border border-gray-300 bg-white">
-                <label class="p-[12px] inline-flex items-center ">
-                    <p class="font-extralight mr-[90px]">5 items Left!</p>
-
-                    <a href="#"
-                        class="font-extralight p-[4px] mr-8 border border-white hover:border-red-400 rounded-sm cursor-pointer">All</a>
-                    <a href="#"
-                        class="font-extralight p-[4px] mr-8 border border-white hover:border-red-400 rounded-sm cursor-pointer">Active</a>
-                    <a href="#"
-                        class="font-extralight p-[4px] mr-8 border border-white hover:border-red-400 rounded-sm cursor-pointer">Complete</a>
-
-                    <a href="#"
-                        class="font-extralight hover:underline ml-[120px] cursor-pointer">Clear
-                        Complete</a>
-                </label>
-            </li>
         </ul>
+        <div
+            class="w-full px-[51px] py-2 text-[13px] bg-white border flex">
+            <button
+                onclick="all()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                All</button>
+            <button
+                onclick="active()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                Active</button>
+            <button
+                onclick="completed()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                Completed</button>
+            <button
+                onclick="clearCompleted()"
+                class=" hover:underline transition-all duration-500 ml-[220px]">
+                Clear Completed</button>
+        </div>
+
         <script>
-            const todosList = [
-                
-            ];
-            
-            function addTodo(event) {
-                const value = event.target.value;
-                document.getElementById("id").innerHTML = "You pressed:" + " " + value;
-                todosList.unshift({ todo: value, completed: false, id: 1});
-                consle.log(todosList);
-            };
+        let todos = [];
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
 
+        if (storedTodos) {
+        todos = storedTodos;
+        }
 
+        renderAll();
+
+        function renderAll() {
+            document.querySelector('ul').innerHTML = "";
+            todos.forEach((todo, index) => {
+            renderTodos(todo, index);
+            });
+        }
+
+            function renderTodos(todoObj, index) {
+    const li = document.createElement('li');
+
+    li.className = "w-full px-[51px] py-3 text-[20px] bg-white border flex items-center justify-between";
+
+    // LEFT SIDE (circle + text)
+    const left = document.createElement("div");
+    left.className = "flex items-center gap-3";
+
+    // Circle
+    const circle = document.createElement("div");
+    circle.className = `
+        w-8 h-8 rounded-full border-2 border-gray-300 
+        flex items-center justify-center bg-white 
+        transition duration-200 cursor-pointer
+    `;
+
+    // Tick
+    const tick = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    tick.setAttribute("viewBox", "0 0 24 24");
+    tick.setAttribute("fill", "none");
+    tick.setAttribute("stroke", "currentColor");
+    tick.setAttribute("stroke-width", "2");
+    tick.classList.add("w-5", "h-5", "stroke-white", "hidden");
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M5 13l4 4L19 7");
+    path.setAttribute("stroke-linecap", "round");
+    path.setAttribute("stroke-linejoin", "round");
+
+    tick.appendChild(path);
+    circle.appendChild(tick);
+
+    // Text
+    const text = document.createElement("span");
+    text.innerText = todoObj.text;
+
+    // RIGHT SIDE (cross)
+    const cross = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    cross.setAttribute("viewBox", "0 0 24 24");
+    cross.setAttribute("fill", "none");
+    cross.setAttribute("stroke", "currentColor");
+    cross.setAttribute("stroke-width", "2");
+
+    cross.classList.add(
+        "w-5", "h-5", "text-gray-500",
+        "hover:text-red-500", "cursor-pointer"
+    );
+
+    const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line1.setAttribute("x1", "18");
+    line1.setAttribute("y1", "6");
+    line1.setAttribute("x2", "6");
+    line1.setAttribute("y2", "18");
+
+    const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line2.setAttribute("x1", "6");
+    line2.setAttribute("y1", "6");
+    line2.setAttribute("x2", "18");
+    line2.setAttribute("y2", "18");
+
+    cross.appendChild(line1);
+    cross.appendChild(line2);
+
+    // --- UI Update ---
+    function updateUI() {
+        if (todoObj.completed) {
+            circle.classList.add("bg-green-500", "border-green-500");
+            circle.classList.remove("bg-white", "border-gray-300");
+            tick.classList.remove("hidden");
+
+            text.style.textDecoration = "line-through";
+            text.style.opacity = "0.6";
+        } else {
+            circle.classList.remove("bg-green-500", "border-green-500");
+            circle.classList.add("bg-white", "border-gray-300");
+            tick.classList.add("hidden");
+
+            text.style.textDecoration = "none";
+            text.style.opacity = "1";
+        }
+    }
+
+    // Toggle complete
+    circle.onclick = function () {
+        todos[index].completed = !todos[index].completed;
+        localStorage.setItem('todos', JSON.stringify(todos));
+        renderAll();
+    };
+
+    // Remove
+    cross.onclick = function () {
+        todos.splice(index, 1);
+        localStorage.setItem('todos', JSON.stringify(todos));
+        renderAll();
+    };
+
+    updateUI();
+
+    // Append
+    left.appendChild(circle);
+    left.appendChild(text);
+
+    li.appendChild(left);
+    li.appendChild(cross);
+
+    document.querySelector('ul').appendChild(li);
+}
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const removeButton = document.createElement('button');
+
+        checkbox.type = 'checkbox';
+        checkbox.checked = todoObj.completed;
+
+        // Toggle completed
+        checkbox.onchange = function () {
+            todos[index].completed = checkbox.checked;
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+          removeButton.innerText = "remove";
+        removeButton.className = "m-3 py-1 px-4 text-black border rounded bg-white hover:border-black hover:bg-blue-300 hover:text-white transition-all duration-500";
+
+        li.className = "w-full px-[51px] py-2 text-[20px] bg-white border border hover:text-black";
+
+        // Strike-through if completed
+        if (todoObj.completed) {
+            li.style.textDecoration = "line-through";
+            li.style.opacity = "0.6";
+        }
+
+        removeButton.onclick = function () {
+            todos.splice(index, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+        li.appendChild(checkbox);
+        li.appendChild(document.createTextNode(" " + todoObj.text));
+        li.appendChild(removeButton);
+
+        document.querySelector('ul').appendChild(li);
+    
+
+        function addTodo(event) {
+            if (event.keyCode === 13) {
+               todos.push({
+                text: event.target.value,
+                completed: false
+            });
+
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+
+            event.target.value = ""; 
+            }
+        }
+
+        function all() {
+            renderAll(); // simply show everything
+        }
+
+function active() {
+    document.querySelector('ul').innerHTML = "";
+
+    todos.forEach((todo, index) => {
+        if (!todo.completed) {
+            renderTodos(todo, index);
+        }
+    });
+}
+
+function completed() {
+    document.querySelector('ul').innerHTML = "";
+
+    todos.forEach((todo, index) => {
+        if (todo.completed) {
+            renderTodos(todo, index);
+        }
+    });
+}
+
+            function clearCompleted() {
+                todos = todos.filter(todo => !todo.completed);
+                localStorage.setItem('todos', JSON.stringify(todos));
+                renderAll();
+            }
     </script>
     </body>
 </html>

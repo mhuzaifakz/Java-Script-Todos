@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="Icon_Of_Todos_list" href="colour_full.png">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>TODOS | JavaScript | Tailwind</title>
+    </head>
+    <body class="grid justify-center items-center bg-gray-100">
+        <h1
+            class="block text-8xl px-56 font-extralight mt-10 mb-10 text-red-500">Todos</h1>
+        <input type="search" id="box" value
+            placeholder="What Need To Be Done Now?"
+            class="w-full px-[51px] py-4 shadow shadow-2xl text-[20px] border border-bottom hover:text-black"
+            onkeyup="addTodo(event)">
+        <ul>
+        </ul>
+        <div
+            class="w-full px-[51px] py-2 text-[13px] bg-white border flex">
+            <button
+                onclick="all()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                All</button>
+            <button
+                onclick="active()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                Active</button>
+            <button
+                onclick="completed()"
+                class="ml-[30px] border border-white p-[3px] rounded hover:border-red-500 transition-all duration-500">
+                Completed</button>
+            <button
+                onclick="clearCompleted()"
+                class=" hover:underline transition-all duration-500 ml-[220px]">
+                Clear Completed</button>
+        </div>
+
+       
+    </body>
+</html>

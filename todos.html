@@ -3,13 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="Icon_Of_Todos_list" href="colour_full.png">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Todos</title>
 </head>
-<body>
-    <input type="search" onkeyup="addTodos(event)">
-    <ul></ul>
+<body class="bg-gradient-to-r from-blue-300 via-red-300">
+    <input name="search" class="mx-[300px] w-[800px] h-[50px] h-8 border border-blue-400 mt-10 hover:border-pink-500 transition-all duration-500" type="search" 
+    onkeyup="addMoreTodos(event)">
+    <ul class="mt-4 w-[800px] mx-[300px] text-center"></ul>
+    <div class="mx-[430px]">
+    <button class="m-2 w-40 h-10 border rounded bg-gradient-to-r from-black via-red-300" onclick="removeAll()">Remove All</button>
+    <button class="m-2 w-40 h-10 border rounded bg-gradient-to-r from-black via-red-300" onclick="completed()">Completed</button>
+    <button class="m-2 w-40 h-10 border rounded bg-gradient-to-r from-black via-red-300" onclick="clearCompleted()">Clear Completed</button>
+    </div>
 </body>
 <script>
-   
+    let todos = [];
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+
+    if (storedTodos) {
+        todos = storedTodos;
+    }
+
+    renderAll();
+
+    function renderAll() {
+        document.querySelector('ul').innerHTML = "";
+        todos.forEach((todo, index) => {
+            renderTodos(todo, index);
+        });
+    }
+
+    function renderTodos(todoObj, index) {
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const removeButton = document.createElement('button');
+
+        checkbox.type = 'checkbox';
+        checkbox.checked = todoObj.completed;
+
+        // Toggle completed
+        checkbox.onchange = function () {
+            todos[index].completed = checkbox.checked;
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+        removeButton.innerText = "remove";
+        removeButton.className = "m-3 py-1 px-4 text-black border rounded bg-white hover:border-black hover:bg-blue-300 hover:text-white transition-all duration-500";
+
+        li.className = "mb-4 border border-pink-500 text-blue-300 bg-gradient-to-r from-purple-300 via-purple-500";
+
+        // Strike-through if completed
+        if (todoObj.completed) {
+            li.style.textDecoration = "line-through";
+            li.style.opacity = "0.6";
+        }
+
+        removeButton.onclick = function () {
+            todos.splice(index, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+        li.appendChild(checkbox);
+        li.appendChild(document.createTextNode(" " + todoObj.text));
+        li.appendChild(removeButton);
+
+        document.querySelector('ul').appendChild(li);
+    }
+
+    function addMoreTodos(event) {
+        if (event.keyCode === 13) {
+            todos.push({
+                text: event.target.value,
+                completed: false
+            });
+
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+
+            event.target.value = "";
+        }
+    }
+
+    function removeAll() {
+        todos = [];
+        localStorage.removeItem('todos');
+        renderAll();
+    }
+
+    function completed() {
+        document.querySelector('ul').innerHTML = "";
+
+        todos
+            .filter(todo => todo.completed)
+            .forEach((todo, index) => {
+                renderTodos(todo, index);
+            });
+    }
+
+    function clearCompleted() {
+    todos = todos.filter(todo => !todo.completed);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    renderAll();
+}
 </script>
 </html>
