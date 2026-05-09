@@ -9,7 +9,9 @@
     </head>
     <body class="grid justify-center items-center bg-gray-100">
         <h1
-            class="block text-8xl px-56 font-extralight mt-10 mb-10 text-red-500">Todos</h1>
+            class="block text-8xl px-56 font-extralight mt-10 mb-10 text-red-500">
+            Todos
+        </h1>
         <input type="search" id="box" value
             placeholder="What Need To Be Done Now?"
             class="w-full px-[51px] py-4 shadow shadow-2xl text-[20px] border border-bottom hover:text-black"
@@ -36,6 +38,217 @@
                 Clear Completed</button>
         </div>
 
-       
+        <script>
+        let todos = [];
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
+
+        if (storedTodos) {
+        todos = storedTodos;
+        }
+
+        renderAll();
+
+        function renderAll() {
+            document.querySelector('ul').innerHTML = "";
+            todos.forEach((todo, index) => {
+            renderTodos(todo, index);
+            });
+        }
+
+
+        function renderTodos(todoObj, index) {
+    const li = document.createElement('li');
+
+    li.className = "w-full px-[51px] py-3 text-[20px] bg-white border flex items-center justify-between";
+
+    // LEFT SIDE (circle + text)
+    const left = document.createElement("div");
+    left.className = "flex items-center gap-3";
+
+    // Circle
+    const circle = document.createElement("div");
+    circle.className = `
+        w-8 h-8 rounded-full border-2 border-gray-300 
+        flex items-center justify-center bg-white 
+        transition duration-200 cursor-pointer
+    `;
+
+    // Tick
+    const tick = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    tick.setAttribute("viewBox", "0 0 24 24");
+    tick.setAttribute("fill", "none");
+    tick.setAttribute("stroke", "currentColor");
+    tick.setAttribute("stroke-width", "2");
+    tick.classList.add("w-5", "h-5", "stroke-white", "hidden");
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M5 13l4 4L19 7");
+    path.setAttribute("stroke-linecap", "round");
+    path.setAttribute("stroke-linejoin", "round");
+
+    tick.appendChild(path);
+    circle.appendChild(tick);
+
+    // Text
+    const text = document.createElement("span");
+    text.innerText = todoObj.text;
+
+    // RIGHT SIDE (cross)
+    const cross = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    cross.setAttribute("viewBox", "0 0 24 24");
+    cross.setAttribute("fill", "none");
+    cross.setAttribute("stroke", "currentColor");
+    cross.setAttribute("stroke-width", "2");
+
+    cross.classList.add(
+        "w-5", "h-5", "text-gray-500",
+        "hover:text-red-500", "cursor-pointer"
+    );
+
+    const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line1.setAttribute("x1", "18");
+    line1.setAttribute("y1", "6");
+    line1.setAttribute("x2", "6");
+    line1.setAttribute("y2", "18");
+
+    const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line2.setAttribute("x1", "6");
+    line2.setAttribute("y1", "6");
+    line2.setAttribute("x2", "18");
+    line2.setAttribute("y2", "18");
+
+    cross.appendChild(line1);
+    cross.appendChild(line2);
+
+    // --- UI Update ---
+    function updateUI() {
+        if (todoObj.completed) {
+            circle.classList.add("bg-green-500", "border-green-500");
+            circle.classList.remove("bg-white", "border-gray-300");
+            tick.classList.remove("hidden");
+
+            text.style.textDecoration = "line-through";
+            text.style.opacity = "0.6";
+        } else {
+            circle.classList.remove("bg-green-500", "border-green-500");
+            circle.classList.add("bg-white", "border-gray-300");
+            tick.classList.add("hidden");
+
+            text.style.textDecoration = "none";
+            text.style.opacity = "1";
+        }
+    }
+
+    // Toggle complete
+    circle.onclick = function () {
+        todos[index].completed = !todos[index].completed;
+        localStorage.setItem('todos', JSON.stringify(todos));
+        renderAll();
+    };
+
+    // Remove
+    cross.onclick = function () {
+        todos.splice(index, 1);
+        localStorage.setItem('todos', JSON.stringify(todos));
+        renderAll();
+    };
+
+    updateUI();
+
+    // Append
+    left.appendChild(circle);
+    left.appendChild(text);
+
+    li.appendChild(left);
+    li.appendChild(cross);
+
+    document.querySelector('ul').appendChild(li);
+}
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const removeButton = document.createElement('button');
+
+        checkbox.type = 'checkbox';
+        checkbox.checked = todoObj.completed;
+
+        // Toggle completed
+        checkbox.onchange = function () {
+            todos[index].completed = checkbox.checked;
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+          removeButton.innerText = "remove";
+        removeButton.className = "m-3 py-1 px-4 text-black border rounded bg-white hover:border-black hover:bg-blue-300 hover:text-white transition-all duration-500";
+
+        li.className = "w-full px-[51px] py-2 text-[20px] bg-white border border hover:text-black", draggAble;
+        li.draggable = true;
+
+        // Strike-through if completed
+        if (todoObj.completed) {
+            li.style.textDecoration = "line-through";
+            li.style.opacity = "0.6";
+        }
+
+        removeButton.onclick = function () {
+            todos.splice(index, 1);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+        };
+
+        li.appendChild(checkbox);
+        li.appendChild(document.createTextNode(" " + todoObj.text));
+        li.appendChild(removeButton);
+
+        document.querySelector('ul').appendChild(li);
+    
+            
+
+        function addTodo(event) {
+            if (event.keyCode === 13) {
+                todos.push({
+                    text: event.target.value ,
+                    compeleted: false
+            });
+            localStorage.setItem('todos', JSON.stringify(todos));
+            renderAll();
+
+            event.target.value = ""; 
+            }
+        }
+
+        
+        function completed() {
+            document.querySelector('ul').innerHTML = "";
+
+            todos.forEach((todo, index) => {
+
+            if (todo.completed) {
+
+            renderTodos(todo, index);
+                }
+             });
+        }
+        function all() {
+            renderAll();
+        }
+        function active() {
+             document.querySelector('ul').innerHTML = "";
+
+            todos.forEach((todo, index) => {
+
+            if (!todo.completed) {
+
+            renderTodos(todo, index);
+                }
+             });
+        }
+        function clearCompleted() {
+            todos = todos.filter(todo => !todo.completed);
+            localStorage.setItem('todos', JSON.stringify(todos))
+            renderAll();
+        }
+
+       </script>
     </body>
 </html>
